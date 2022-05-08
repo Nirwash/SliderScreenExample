@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">Slieder Example</string>
+    <string name="app_name">Slider Example</string>
     <string name="slider_example">Slider example</string>
     <string name="description">If you want to see slider, pls reinstall application.</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="back">BACK</string>
+    <string name="start">START</string>
+    <string name="slide_1_title">Welcome to slide 1</string>
+    <string name="slide_1_description">This is slide 1.\nYou can skip it or move to next.</string>
+    <string name="slide_2_title">Welcome to slide 2</string>
+    <string name="slide_2_description">This is slide 2. \nYou can move back or start using application.</string>
 </resources>
