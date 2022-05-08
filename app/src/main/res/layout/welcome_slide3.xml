@@ -14,12 +14,12 @@
         <ImageView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/moon2"/>
+            android:src="@drawable/second_picture"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/slide_2_title"
+            android:text="@string/slide_3_title"
             android:textSize="30sp"
             android:textColor="@android:color/white"
             android:textStyle="bold"/>
@@ -31,7 +31,7 @@
             android:paddingStart="40dp"
             android:paddingEnd="40dp"
             android:textAlignment="center"
-            android:text="@string/slide_2_description"
+            android:text="@string/slide_3_description"
             android:textSize="16sp"
             android:textColor="@android:color/white"/>
 

@@ -1,26 +1,29 @@
 package com.nirwashh.android.sliederexample
 
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.Html
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.view.WindowManager
+import android.widget.ImageView
 import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.nirwashh.android.sliederexample.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {
     private lateinit var b: ActivityWelcomeBinding
-    private val layouts = intArrayOf(R.layout.welcome_slide1, R.layout.welcome_slide2)
-    private val dots: Array<TextView?> = arrayOfNulls(layouts.size)
+    private val layouts = intArrayOf(R.layout.welcome_slide1, R.layout.welcome_slide2, R.layout.welcome_slide3)
+    private val dots: Array<ImageView?> = arrayOfNulls(layouts.size)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         b = ActivityWelcomeBinding.inflate(layoutInflater)
         setContentView(b.root)
+
+        setStatusBarColor()
 
         addBottomDots(0)
         b.viewPager.adapter = MyViewPagerAdapter()
@@ -64,9 +67,17 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
         b.btnBack.setOnClickListener {
-            b.viewPager.currentItem = -1
+            b.viewPager.currentItem -= 1
 
         }
+    }
+
+    private fun setStatusBarColor() {
+        val window = this.window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = this.resources.getColor(R.color.welcome_status_bar_color)
+
     }
 
     private fun getItem(i: Int): Int {
@@ -74,17 +85,13 @@ class WelcomeActivity : AppCompatActivity() {
     }
 
     private fun addBottomDots(currentPage: Int) {
-        val colorActive = resources.getIntArray(R.array.array_dot_active)
-        val colorInActive = resources.getIntArray(R.array.array_dot_inactive)
         b.layoutDots.removeAllViews()
         for (i in dots.indices) {
-            dots[i] = TextView(this)
-            dots[i]!!.text = Html.fromHtml("?")
-            dots[i]!!.textSize = 35f
-            dots[i]!!.setTextColor(colorInActive[currentPage])
+            dots[i] = ImageView(this)
+            dots[i]!!.setImageResource(R.drawable.ic_star_outlined)
             b.layoutDots.addView(dots[i])
         }
-        if (dots.isNotEmpty()) dots[currentPage]!!.setTextColor(colorActive[currentPage])
+        if (dots.isNotEmpty()) dots[currentPage]!!.setImageResource(R.drawable.ic_star)
     }
 
     private fun launchHomeScreen() {
